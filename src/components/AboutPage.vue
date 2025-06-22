@@ -33,7 +33,7 @@ export default {
         return;
       }
       try {
-        await axios.post("https://vitae-express.vercel.app/api/messages", { message: this.message });
+        await axios.post("/api/messages", { message: this.message });
         this.message = "";
         alert("Mensagem enviada com sucesso!");
       } catch (error) {

@@ -33,7 +33,7 @@ export default {
   methods: {
     async registerUser() {
       try {
-        const response = await axios.post("https://vitae-express.vercel.app/api/auth/register", {
+        const response = await axios.post("/api/auth/register", {
           name: this.name,
           address: this.address,
           email: this.email,

@@ -31,7 +31,7 @@ export default {
       return;
     }
     try {
-      const response = await axios.get("https://vitae-express.vercel.app/api/users/me", {
+      const response = await axios.get("/api/users/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
       this.user = response.data;
