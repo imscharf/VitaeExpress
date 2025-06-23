@@ -44,7 +44,7 @@ export default {
     async login() {
       this.error = "";
       try {
-        const res = await axios.post("http://localhost:5000/api/auth/login", {
+        const res = await axios.post("/api/auth/login", {
           email: this.email,
           password: this.password,
         });
