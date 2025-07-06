@@ -19,6 +19,6 @@ mongoose.connect(dbURI)
     .then(() => console.log('Conectado ao MongoDB Atlas'))
     .catch(err => console.log('Erro ao conectar ao MongoDB Atlas:', err));
 
-
-
-module.exports = app;
+app.listen(5000, () => {
+    console.log('Servidor rodando na porta 5000');
+});
