@@ -322,46 +322,47 @@ export default {
           return;
       }
       window.open(sharerUrl, '_blank', 'width=600,height=400,noopener,noreferrer');
-    }
-  },
-  openEmailModal() {
-    this.recipientEmail = '';
-    this.emailStatusMessage = '';
-    this.emailError = false;
-    this.showEmailModal = true;
-  },
-  async sendEmail() {
-    if (!this.recipientEmail) return;
-
-    this.isSendingEmail = true;
-    this.emailStatusMessage = '';
-
-    try {
-      const configResponse = await axios.get('/api/config/emailjs');
-      const { serviceId, templateId, publicKey } = configResponse.data;
-
-      const templateParams = {
-        from_name: this.cv.fullName,
-        to_email: this.recipientEmail,
-        fullName: this.cv.fullName,
-        email: this.cv.email,
-        phone: this.cv.phone,
-        professionalSummary: this.cv.professionalSummary,
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
-
-      this.emailStatusMessage = 'E-mail enviado com sucesso!';
+    },
+    openEmailModal() {
+      this.recipientEmail = '';
+      this.emailStatusMessage = '';
       this.emailError = false;
-      setTimeout(() => this.showEmailModal = false, 2000);
+      this.showEmailModal = true;
+    },
+    async sendEmail() {
+      if (!this.recipientEmail) return;
 
-    } catch (error) {
-      console.error('Falha ao enviar e-mail:', error);
-      this.emailStatusMessage = 'Falha ao enviar o e-mail. Verifique a configuração.';
-      this.emailError = true;
-    } finally {
-      this.isSendingEmail = false;
-    }
+      this.isSendingEmail = true;
+      this.emailStatusMessage = '';
+
+      try {
+        const configResponse = await axios.get('/api/config/emailjs');
+        const { serviceId, templateId, publicKey } = configResponse.data;
+
+        const templateParams = {
+          from_name: this.cv.fullName,
+          to_email: this.recipientEmail,
+          fullName: this.cv.fullName,
+          email: this.cv.email,
+          phone: this.cv.phone,
+          professionalSummary: this.cv.professionalSummary,
+        };
+
+        await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+        this.emailStatusMessage = 'E-mail enviado com sucesso!';
+        this.emailError = false;
+        setTimeout(() => this.showEmailModal = false, 2000);
+
+      } catch (error) {
+        console.error('Falha ao enviar e-mail:', error);
+        this.emailStatusMessage = 'Falha ao enviar o e-mail. Verifique a configuração.';
+        this.emailError = true;
+      } finally {
+        this.isSendingEmail = false;
+      }
+
+    },
   },
 };
 </script>
