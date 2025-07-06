@@ -31,7 +31,10 @@
       </ul>
     </nav>
 
-    <main class="flex-grow container mx-auto px-4 py-6">
+    <main class="flex-grow" :class="{
+        'flex flex-col justify-center items-center bg-blue-50': isHomePage,
+        'container mx-auto px-4 py-6': !isHomePage
+      }">
       <router-view />
     </main>
 
@@ -48,6 +51,11 @@ export default {
       menuOpen: false,
       isAuthenticated: false,
     };
+  },
+  computed: {
+    isHomePage() {
+      return this.$route.path === '/';
+    }
   },
   methods: {
     toggleMenu() {
