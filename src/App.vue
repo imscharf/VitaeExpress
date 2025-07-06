@@ -32,8 +32,8 @@
     </nav>
 
     <main class="flex-grow" :class="{
-        'flex flex-col justify-center items-center bg-blue-50': isHomePage,
-        'container mx-auto px-4 py-6': !isHomePage
+        'flex flex-col justify-center items-center bg-blue-50': isFullPageLayout,
+        'container mx-auto px-4 py-6': !isFullPageLayout
       }">
       <router-view />
     </main>
@@ -53,8 +53,9 @@ export default {
     };
   },
   computed: {
-    isHomePage() {
-      return this.$route.path === '/';
+    isFullPageLayout() {
+      const fullPageRoutes = ['/', '/login', '/register'];
+      return fullPageRoutes.includes(this.$route.path);
     }
   },
   methods: {

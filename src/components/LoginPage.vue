@@ -1,31 +1,29 @@
 <template>
-  <div class="min-h-screen flex flex-col justify-center items-center bg-blue-50">
-    <div class="bg-white rounded-lg shadow p-8 max-w-md w-full">
-      <h1 class="text-2xl font-bold mb-6 text-blue-700">Login</h1>
-      <form @submit.prevent="login" class="flex flex-col gap-4">
-        <input
-          v-model="email"
-          type="email"
-          placeholder="E-mail"
-          class="border rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-200"
-          required
-        />
-        <input
-          v-model="password"
-          type="password"
-          placeholder="Senha"
-          class="border rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-200"
-          required
-        />
-        <button
-          type="submit"
-          class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition font-semibold"
-        >
-          Entrar
-        </button>
-      </form>
-      <p v-if="error" class="text-red-600 mt-4">{{ error }}</p>
-    </div>
+  <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+    <h1 class="text-2xl font-bold mb-6 text-blue-700 text-center">Login</h1>
+    <form @submit.prevent="login" class="flex flex-col gap-4">
+      <input
+        v-model="email"
+        type="email"
+        placeholder="E-mail"
+        class="border rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-200"
+        required
+      />
+      <input
+        v-model="password"
+        type="password"
+        placeholder="Senha"
+        class="border rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-200"
+        required
+      />
+      <button
+        type="submit"
+        class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition font-semibold"
+      >
+        Entrar
+      </button>
+    </form>
+    <p v-if="error" class="text-red-600 mt-4 text-center">{{ error }}</p>
   </div>
 </template>
 
