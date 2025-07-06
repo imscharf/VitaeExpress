@@ -122,7 +122,7 @@ export default {
       return;
     }
     try {
-      const response = await axios.get("http://localhost:5000/api/users/me", {
+      const response = await axios.get("/api/users/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.data.cv) {
@@ -160,7 +160,7 @@ export default {
           return;
       }
       try {
-        await axios.put("http://localhost:5000/api/users/me/cv", this.cv, {
+        await axios.put("/api/users/me/cv", this.cv, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Currículo salvo com sucesso!");
